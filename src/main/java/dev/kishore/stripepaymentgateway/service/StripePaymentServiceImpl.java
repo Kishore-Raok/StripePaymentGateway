@@ -17,7 +17,7 @@ public class StripePaymentServiceImpl implements PaymentService {
 
     @Override
      public String makePayment(String orderId, Long amount) throws StripeException {
-        Stripe.apiKey = "sk_test_51POg8w2Mba4871ciIoQ9UnZ00XSv4JKH7o81PeOrEvlBQluOijyVulAtRs8IWje79i6qVSF9vXbasFsUe5Qo4ncR00WrtZ49ze";
+        Stripe.apiKey = "type your secret key";
 
         PriceCreateParams params =
                 PriceCreateParams.builder()
@@ -30,7 +30,7 @@ public class StripePaymentServiceImpl implements PaymentService {
                         .build();
 
         Price price = Price.create(params);
-        Stripe.apiKey = "sk_test_51POg8w2Mba4871ciIoQ9UnZ00XSv4JKH7o81PeOrEvlBQluOijyVulAtRs8IWje79i6qVSF9vXbasFsUe5Qo4ncR00WrtZ49ze";
+        Stripe.apiKey = "type your secret key";
 
         PaymentLinkCreateParams paymentParams =
                 PaymentLinkCreateParams.builder()
