@@ -8,6 +8,9 @@ import com.stripe.model.Price;
 import com.stripe.param.PaymentLinkCreateParams;
 import com.stripe.param.PriceCreateParams;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+
 @Service
 
 public class StripePaymentServiceImpl implements PaymentService {
@@ -19,10 +22,10 @@ public class StripePaymentServiceImpl implements PaymentService {
         PriceCreateParams params =
                 PriceCreateParams.builder()
                         .setCurrency("usd")
-                        .setUnitAmount(1000L)
+                        .setUnitAmount(amount)
 
                         .setProductData(
-                                PriceCreateParams.ProductData.builder().setName("Gold Plan").build()
+                                PriceCreateParams.ProductData.builder().setName(orderId).build()
                         )
                         .build();
 
