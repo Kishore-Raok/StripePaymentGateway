@@ -17,7 +17,7 @@ public class StripePaymentServiceImpl implements PaymentService {
 
     @Override
      public String makePayment(String orderId, Long amount) throws StripeException {
-        Stripe.apiKey = "type your secret key";
+        Stripe.apiKey = "sk_test_51POg8w2Mba4871ciIoQ9UnZ00XSv4JKH7o81PeOrEvlBQluOijyVulAtRs8IWje79i6qVSF9vXbasFsUe5Qo4ncR00WrtZ49ze";
 
         PriceCreateParams params =
                 PriceCreateParams.builder()
@@ -30,7 +30,7 @@ public class StripePaymentServiceImpl implements PaymentService {
                         .build();
 
         Price price = Price.create(params);
-        Stripe.apiKey = "type your secret key";
+        Stripe.apiKey = "sk_test_51POg8w2Mba4871ciIoQ9UnZ00XSv4JKH7o81PeOrEvlBQluOijyVulAtRs8IWje79i6qVSF9vXbasFsUe5Qo4ncR00WrtZ49ze";
 
         PaymentLinkCreateParams paymentParams =
                 PaymentLinkCreateParams.builder()
@@ -38,6 +38,16 @@ public class StripePaymentServiceImpl implements PaymentService {
                                 PaymentLinkCreateParams.LineItem.builder()
                                         .setPrice(price.getId())
                                         .setQuantity(1L)
+                                        .build()
+                        )
+                        .setAfterCompletion(
+                                PaymentLinkCreateParams.AfterCompletion.builder()
+                                        .setType(PaymentLinkCreateParams.AfterCompletion.Type.REDIRECT)
+                                        .setRedirect(
+                                                PaymentLinkCreateParams.AfterCompletion.Redirect.builder()
+                                                        .setUrl("https://www.google.com/")
+                                                        .build()
+                                        )
                                         .build()
                         )
                         .build();
