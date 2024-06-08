@@ -29,7 +29,11 @@ public class PaymentController {
             return new ResponseEntity<>("Failed to create payment link", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @PostMapping("/webhook")
+    public String handelWebhook(){
+        System.out.println("Webhook request is recived");
+        return "";
+    }
 
 
 
